@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: python /code/manage.py runserver 0.0.0.0:8000
+#    command: gunicorn jmr_project.wsgi -b 0.0.0.0:8000
+    environment:
+      - ENVIRONMENT=production
+      - SECRET_KEY=qj-8lqcn^r0s%vj4l8+7td0*__2uu!@_kcbfxqw29avu%5+wf!
+      - DEBUG=0
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:11
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432

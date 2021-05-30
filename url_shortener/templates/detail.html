@@ -1,0 +1,18 @@
+{% extends 'snippets/base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="jumbotron mt-4">
+            <div class="card mt-5">
+                <div class="card-header text-center py-3">
+                    <h1>Skracacz linków</h1>
+                </div>
+                <div class="px-3 py-4 text-lg-center">
+                    <p >Twój skrócony URL:</p>
+                    <h1>http://{{ request.META.HTTP_HOST }}/{{ object.shortened_url }}/</h1>
+                    <p>przeniesie Cię do:</p>
+                    <h6><a href="{{ object.original_url }}">{{ object.original_url }}</a></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
